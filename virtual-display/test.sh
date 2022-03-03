@@ -1,3 +1,4 @@
+#!/usr/bin/bash
 setup(){
 printf "Virtual Display\n"
 printf "Enter the Width\n>>>"
@@ -11,6 +12,19 @@ if [[ $b == "right" ]]; then
 else 
 position="--left-of"
 fi
+ printf "Now connect Your Android phone\nUSB-debugging should be enabled"
+    printf "\nFor more detail see https://github.com/aruncs31s/android-linux-monitor/blob/main/Android_setup.md\n"
+    printf "\n\n\nPress enter after connecting\n>>>"
+    read nopp
+    adb reverse tcp:5900 tcp:5900
+    xrandr --addmode VIRTUAL1 ${w}x${h}
+    
+    
+    xrandr --output VIRTUAL1 --mode ${b} LVDS1
+    bar
+    
+    x11vnc -localhost -clip ${w}x${h}+${PW}+0
+
 }
 bar(){
   n=20
@@ -33,22 +47,11 @@ resolution(){
     xrandr | grep -v current | grep -v disconnected | grep -v connected
 }
 virtual_display(){
-    printf "Now connect Your Android phone\nUSB-debugging should be enabled"
-    printf"For more detail see https://github.com/aruncs31s/android-linux-monitor/blob/main/Android_setup.md\n"
-    printf "\n\n\nPress enter after connecting\n>>>"
-    read nopp
-    adb reverse tcp:5900 tcp:5900
-    xrandr --addmode VIRTUAL ${w}/${h}
-    
-    
-    xrandr --output VIRTUAL --mode $b LVDS1
-    bar
-    
-    x11vnc -localhost -clip ${w}x${h}+${PW}+0
+   echo "hi"
 }
 if [[ $1 == "--configure" ]]; then
     setup
-elif [[ $1 == --resolution ]]; then
+elif [[ $1 == "--resolution" ]]; then
     resolution
 else
 usage
