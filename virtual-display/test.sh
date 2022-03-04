@@ -7,20 +7,21 @@ printf "\nEnter the Height\n>>>"
 read h
 printf "\nEnter the position of new display(right/left)\n>>>"
 read b
-if [[ $b == "right" ]]; then
-    position="--right-of"
-else 
-position="--left-of"
-fi
- printf "Now connect Your Android phone\nUSB-debugging should be enabled"
-    printf "\nFor more detail see https://github.com/aruncs31s/android-linux-monitor/blob/main/Android_setup.md\n"
-    printf "\n\n\nPress enter after connecting\n>>>"
-    read nopp
+    if [[ $b == "right" ]]; then
+        position="--right-of"
+    else 
+        position="--left-of"
+    fi
+    
+printf "Now connect Your Android phone\nUSB-debugging should be enabled"
+printf "\nFor more detail see https://github.com/aruncs31s/android-linux-monitor/blob/main/Android_setup.md\n"
+printf "\n\n\nPress enter after connecting\n>>>"
+read nopp
     adb reverse tcp:5900 tcp:5900
-    xrandr --addmode VIRTUAL1 ${w}x${h}
+    xrandr --addmode ${virt} ${w}x${h}
     
     
-    xrandr --output VIRTUAL1 --mode ${b} LVDS1
+    xrandr --output ${virt} --mode ${b} LVDS1
     bar
     
     x11vnc -localhost -clip ${w}x${h}+${PW}+0
