@@ -25,7 +25,7 @@ read nopp
     xrandr --output VIRTUAL1 --mode ${w}x${h} $position LVDS1
     bar
     
-    x11vnc -localhost -clip ${w}x${h}+($PW)+0
+    x11vnc -localhost -clip ${w}x${h}+${PW}+0
 
 }
 bar(){
@@ -41,8 +41,8 @@ done
 
 }
 usage(){
-    printf "\n sh virtual-display --configure (to setup)"
-    printf "\n "
+    printf "\n visit https://github.com/aruncs31s/android-linux-monitor for more details"
+    printf "\n"
 }
 resolution(){
     printf "\nAvailable resolutions\n"
@@ -51,10 +51,10 @@ resolution(){
 virtual_display(){
    echo "hi"
 }
-if [[ $1 == "--configure" ]]; then
-    setup
+if [[ $1 == "--help" ]]; then
+    usage
 elif [[ $1 == "--resolution" ]]; then
     resolution
 else
-usage
+setup
 fi 
