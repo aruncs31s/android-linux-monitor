@@ -27,3 +27,11 @@ EndSection
 
 ![alt-text](https://raw.githubusercontent.com/aruncs31s/android-linux-monitor/main/screenshots/20220304132515.png)
 
+## Download the script
+
+```
+curl -Lo virtual-display.sh https://raw.githubusercontent.com/aruncs31s/android-linux-monitor/main/virtual-display/virtual-display.sh
+
+chmod +x virtual-display.sh
+
+./virtual-display.sh
