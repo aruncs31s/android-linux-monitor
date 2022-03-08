@@ -1,5 +1,14 @@
 # android-linux-monitor
 Use Your Android As moniitor for Linux
+### Methods
+1. NO-machine you can check this 
+[here](https://github.com/aruncs31s/android-linux-monitor/tree/main/nomachine)
+
+<br />
+
+2. x11vnc more details given below
+
+<br />
 
 ## Setup 
 
